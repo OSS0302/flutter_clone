@@ -132,7 +132,7 @@ class _carrotMarketState extends State<carrotMarket> {
                 borderRadius: BorderRadius.circular(16),
                 image: DecorationImage(
                   image: AssetImage(imagePath ??
-                      'assets/images/carrotmarket/carrotImage.jpeg'),
+                      'assets/images/carrotmarket/pt.jpeg'),
                   fit: BoxFit.cover,
                 ),
               ),
