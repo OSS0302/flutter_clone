@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_clone/presentation/carrot_market.dart';
-import 'package:flutter_clone/presentation/facebook_main.dart';
+
+import 'package:flutter_clone/presentation/instagram/instram_home_screen.dart';
 
 
 
@@ -17,11 +17,16 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-
         primarySwatch: Colors.blue,
+        appBarTheme: AppBarTheme(
+        backgroundColor: Colors.white,
+          titleTextStyle: TextStyle(color: Colors.black),
+          centerTitle: false,
+        ),
       ),
+
       debugShowCheckedModeBanner: false,
-      home: const carrotMarket(),
+      home:  App(),
     );
   }
 }
