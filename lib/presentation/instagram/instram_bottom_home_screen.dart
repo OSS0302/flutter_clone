@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_clone/presentation/components/image_data.dart';
 import 'package:flutter_clone/presentation/instagram/instagram_home.dart';
-import 'package:provider/provider.dart';
 
 class App extends StatefulWidget {
   const App({Key? key}) : super(key: key);
@@ -14,11 +13,11 @@ class _AppState extends State<App> {
   int screenIndex = 0;
 
   List<Widget> screenList = [
-    Text('홈스크린'),
-    Text('서치스크린'),
-    Text('업데이트'),
-    Text('액티브'),
-    Text('마이')
+    const Text('홈스크린'),
+    const Text('서치스크린'),
+    const Text('업데이트'),
+    const Text('액티브'),
+    const Text('마이')
   ];
 
   @override
@@ -30,14 +29,14 @@ class _AppState extends State<App> {
             index: screenIndex,
             children: [
              home(),
-          ],
+            ],
           ),
 
           bottomNavigationBar: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
             showSelectedLabels: false,
             showUnselectedLabels: false,
-            backgroundColor: Colors.black,
+            backgroundColor: Colors.white,
             currentIndex: screenIndex,
             elevation: 0,
             onTap: (index) {
