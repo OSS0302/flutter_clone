@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_clone/presentation/components/avatar_widget.dart';
 
-enum AvatarType { storyBoardAvtar, nickNameAvatar, bottomNavAvatar }
+enum AvatarType { storyBoardAvtar, nickNameAvatar, mainStroyBoard }
 
 class AvatarWidget extends StatelessWidget {
   bool? hasStroy;
@@ -17,7 +17,7 @@ class AvatarWidget extends StatelessWidget {
     required this.thumbPath,
     this.hasStroy,
     this.nickName,
-    this.size,
+    this.size = 65,
   }) : super(key: key);
 
 //그라데이션 있는 위젯
@@ -42,10 +42,10 @@ class AvatarWidget extends StatelessWidget {
           color: Colors.white,
         ),
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(100),
-          child: Container(
-            width: MediaQuery.of(context).size.width * 0.21,
-            height: MediaQuery.of(context).size.height * 0.1,
+          borderRadius: BorderRadius.circular(size!),
+          child: SizedBox(
+            width: size,
+            height: size,
             child: CachedNetworkImage(
               imageUrl: thumbPath,
               fit: BoxFit.cover,
@@ -56,7 +56,8 @@ class AvatarWidget extends StatelessWidget {
     );
   }
 
-Widget MyStoryBoard(BuildContext context){
+// 나의 스토리 보드
+  Widget myStoryBoard(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(4),
       decoration: const BoxDecoration(
@@ -66,7 +67,7 @@ Widget MyStoryBoard(BuildContext context){
       child: ClipRRect(
         borderRadius: BorderRadius.circular(100),
         child: Container(
-          width: MediaQuery.of(context).size.width * 0.21,
+          width: MediaQuery.of(context).size.width * 0.2,
           height: MediaQuery.of(context).size.height * 0.1,
           child: CachedNetworkImage(
             imageUrl: thumbPath,
@@ -75,7 +76,20 @@ Widget MyStoryBoard(BuildContext context){
         ),
       ),
     );
-}
+  }
+
+// 메인 스토리보드
+  Widget mainMyStoryBoard(BuildContext context) {
+    return Row(
+      children: [
+        gradationWidget(context),
+        Text(
+          nickName ?? '',
+          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+        ),
+      ],
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -84,10 +98,10 @@ Widget MyStoryBoard(BuildContext context){
         return gradationWidget(context);
         break;
       case AvatarType.nickNameAvatar:
-        return MyStoryBoard(context);
+        return myStoryBoard(context);
         break;
-      case AvatarType.bottomNavAvatar:
-        return Container();
+      case AvatarType.mainStroyBoard:
+        return mainMyStoryBoard(context);
         break;
     }
   }
