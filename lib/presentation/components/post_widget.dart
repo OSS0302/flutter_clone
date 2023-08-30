@@ -115,8 +115,7 @@ class PostWidget extends StatelessWidget {
 // 댓글 만들기
   Widget _replyTextBtn() {
     return GestureDetector(
-      onTap: () {
-      },
+      onTap: () {},
       child: const Padding(
         padding: EdgeInsets.symmetric(horizontal: 15.0),
         child: Text(
@@ -124,7 +123,17 @@ class PostWidget extends StatelessWidget {
           style: TextStyle(color: Colors.grey, fontSize: 12),
         ),
       ),
+    );
+  }
 
+  // 날짜
+  Widget _dateago() {
+    return const Padding(
+      padding: EdgeInsets.symmetric(horizontal: 17.0),
+      child: Text(
+        '1일전',
+        style: TextStyle(fontSize: 11),
+      ),
     );
   }
 
