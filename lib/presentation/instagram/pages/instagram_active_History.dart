@@ -8,6 +8,9 @@ class ActiveHistory extends StatelessWidget {
   // appbar
   PreferredSizeWidget _appbar(BuildContext context) {
     return AppBar(
+      iconTheme: const IconThemeData(
+        color: Colors.black,
+      ),
       centerTitle: false,
       backgroundColor: Colors.white,
       elevation: 0,
@@ -30,7 +33,7 @@ class ActiveHistory extends StatelessWidget {
         children: [
           Container(
             decoration: BoxDecoration(
-              shape: BoxShape.circle,
+                shape: BoxShape.circle,
               border: Border.all(color: Colors.black, //color of border
                 width: 2, )
             ),
@@ -38,7 +41,7 @@ class ActiveHistory extends StatelessWidget {
               size: 56,
               type: AvatarType.nickNameAvatar,
               thumbPath:
-                  'https://techgeeksblog.com/wp-content/uploads/2023/03/How-to-See-Sent-Follow-Request-on-Instagram.webp',
+              'https://thenounproject.com/api/private/icons/682465/edit/?backgroundShape=SQUARE&backgroundShapeColor=%23000000&backgroundShapeOpacity=0&exportSize=752&flipX=false&flipY=false&foregroundColor=%23000000&foregroundOpacity=1&imageFormat=png&rotation=0'
             ),
           ),
           const SizedBox(
@@ -83,7 +86,7 @@ class ActiveHistory extends StatelessWidget {
             size: 40,
             type: AvatarType.nickNameAvatar,
             thumbPath:
-                'https://scontent-ssn1-1.cdninstagram.com/v/t51.2885-19/363233336_296568409535930_6371283386676776730_n.jpg?stp=dst-jpg_s160x160&_nc_cat=102&ccb=1-7&_nc_sid=8ae9d6&_nc_ohc=PXXzV5bVk3kAX-rj80c&_nc_ht=scontent-ssn1-1.cdninstagram.com&oh=00_AfCv0IeSXxyaTQ_33nn_EjQkHhBk6unrnvY5EJdDXIzxWg&oe=64F35F62',
+            'https://thenounproject.com/api/private/icons/682465/edit/?backgroundShape=SQUARE&backgroundShapeColor=%23000000&backgroundShapeOpacity=0&exportSize=752&flipX=false&flipY=false&foregroundColor=%23000000&foregroundOpacity=1&imageFormat=png&rotation=0'
           ),
           const SizedBox(
             width: 10,
