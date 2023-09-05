@@ -31,17 +31,21 @@ class ActiveHistory extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 10.0),
       child: Row(
         children: [
-          Container(
-            decoration: BoxDecoration(
-                shape: BoxShape.circle,
-              border: Border.all(color: Colors.black, //color of border
-                width: 2, )
-            ),
-            child: AvatarWidget(
-              size: 56,
-              type: AvatarType.nickNameAvatar,
-              thumbPath:
-              'https://thenounproject.com/api/private/icons/682465/edit/?backgroundShape=SQUARE&backgroundShapeColor=%23000000&backgroundShapeOpacity=0&exportSize=752&flipX=false&flipY=false&foregroundColor=%23000000&foregroundOpacity=1&imageFormat=png&rotation=0'
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                border: Border.all(color: Colors.black, //color of border
+                  width: 2,
+                )
+              ),
+              child: AvatarWidget(
+                size: 56,
+                type: AvatarType.nickNameAvatar,
+                thumbPath:
+                'https://thenounproject.com/api/private/icons/682465/edit/?backgroundShape=SQUARE&backgroundShapeColor=%23000000&backgroundShapeOpacity=0&exportSize=752&flipX=false&flipY=false&foregroundColor=%23000000&foregroundOpacity=1&imageFormat=png&rotation=0'
+              ),
             ),
           ),
           const SizedBox(
@@ -138,7 +142,7 @@ class ActiveHistory extends StatelessWidget {
     );
   }
 
-  // 바디
+  // 바디 활동영역 부분
   Widget _newRecentlyActiveView(BuildContext context, String title) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 10),
