@@ -239,6 +239,8 @@
 // }
 
 import 'package:flutter/material.dart';
+import 'package:flutter_clone/presentation/carrotMarket/pages/carrothome.dart';
+import 'package:flutter_clone/presentation/components/image_data.dart';
 
 class CarrotApp extends StatefulWidget {
   const CarrotApp({Key? key}) : super(key: key);
@@ -260,11 +262,11 @@ class _CarrotAppState extends State<CarrotApp> {
   Widget build(BuildContext context) {
     return  WillPopScope(
         child: Scaffold(
-          backgroundColor: Colors.black,
+          backgroundColor: Color(0xFF1C1B1E),
           body: IndexedStack(
             index: screenIndex,
             children: [
-              Container(),
+              CarrotHome(),
               Container(),
               Container(),
               Container(),
@@ -273,9 +275,13 @@ class _CarrotAppState extends State<CarrotApp> {
           ),
           bottomNavigationBar: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
-            showSelectedLabels: false,
-            showUnselectedLabels: false,
-            backgroundColor: Colors.white,
+              selectedFontSize: 13,
+              unselectedFontSize: 13,
+              selectedItemColor: Colors.white,
+              unselectedItemColor: Colors.white,
+              //selectedFontSize = 14.0,
+              //unselectedFontSize
+            backgroundColor: Color(0xFF1C1B1E),
             currentIndex: screenIndex,
             elevation: 0,
             onTap: (index) {
@@ -284,21 +290,28 @@ class _CarrotAppState extends State<CarrotApp> {
               });
             },
             items: [
-              BottomNavigationBarItem(icon: Icon(Icons.home_filled),
-                label: 'home',
+              BottomNavigationBarItem(icon:  ImageData(IconsPath.ChomeOff,width: 100,),
+                activeIcon:ImageData(IconsPath.ChomeOn,width: 100,),
+                label: '홈',
               ),
-              BottomNavigationBarItem(icon: Icon(Icons.home_filled),
-                label: 'home',
+              BottomNavigationBarItem(icon: ImageData(IconsPath.neighborhoodOff,width: 100,),
+                activeIcon: ImageData(IconsPath.neighborhoodOn,width: 100,),
+                label: '동네생활',
               ),
-              BottomNavigationBarItem(icon: Icon(Icons.home_filled),
-                label: 'home',
+              BottomNavigationBarItem(icon: ImageData(IconsPath.locationOff,width: 100,),
+                activeIcon: ImageData(IconsPath.locationOn,width: 100,),
+                label: '내 근처',
               ),
-              BottomNavigationBarItem(icon: Icon(Icons.home_filled),
-                label: 'home',
+
+              BottomNavigationBarItem(icon: ImageData(IconsPath.chattingOff,width: 100,),
+                activeIcon: ImageData(IconsPath.chattingOn,width: 100),
+                label: '채팅',
               ),
-              BottomNavigationBarItem(icon: Icon(Icons.home_filled),
-                label: 'home',
+              BottomNavigationBarItem(icon: ImageData(IconsPath.mycarrotOff,width: 100,),
+                activeIcon: ImageData(IconsPath.mycarrotOn,width: 100),
+                label: '나의 당근',
               ),
+
             ]
           )
         ),
