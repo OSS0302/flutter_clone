@@ -16,15 +16,79 @@ class _CarrotHomeState extends State<CarrotHome> {
   ];
   String _selectedValue = '비전1동';
 
-  Widget _StoryBoard(){
-    return Row(
-      children: [
-        Container(),
-      ],
+  Widget _tileList({
+    String? imagePath,
+    String? title,
+    String? titleTime,
+    String? price,
+    int? inquiry = 0,
+    int? messageBox = 0,
+    int? likeBox = 0,
+  }) {
+    double widthHeight = MediaQuery.of(context).size.height * 0.15;
+    return SizedBox(
+      height: widthHeight,
+      width: MediaQuery.of(context).size.height,
+      child: Row(
+        children: [
+          Flexible(
+            flex: 1,
+            child: Container(
+              width: MediaQuery.of(context).size.width * 0.35,
+              height: MediaQuery.of(context).size.height * 0.5,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16),
+                color: Colors.cyan,
+                image: DecorationImage(
+                  image: AssetImage(
+                      imagePath ?? 'assets/images/carrotMarket/pt.jpeg'),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 4.0,horizontal: 8),
+                child: Text(
+                  title ?? ('올웨이즈 양도권 '),
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 4.0,horizontal: 8),
+                child: Text(
+                  titleTime ?? '용이동 8일전',
+                  style: const TextStyle(
+                    color: Colors.grey,
+                    fontSize: 13,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8),
+                child: Text(
+                  price ?? '300000원',
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                  ),
+                ),
+              ),
+
+            ],
+          ),
+        ],
+      ),
     );
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -85,7 +149,7 @@ class _CarrotHomeState extends State<CarrotHome> {
       ),
       body: ListView(
         children: [
-          _StoryBoard(),
+          _tileList(),
         ],
       ),
       backgroundColor: const Color(0xFF1C1B1E),
