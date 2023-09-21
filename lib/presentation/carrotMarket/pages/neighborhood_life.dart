@@ -44,12 +44,13 @@ class _NeighborhoodLifeState extends State<NeighborhoodLife> {
   Widget _ClassStroyBoard(BuildContext context) {
     return Column(
       children: [
-        Container(
-          width: MediaQuery.of(context).size.width * 0.17,
-          height: MediaQuery.of(context).size.height * 0.088,
-          child: ImageData(IconsPath.myclass),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(100),
+        ClipRRect(
+          borderRadius: BorderRadius.circular(100),
+          child: Container(
+            width: MediaQuery.of(context).size.width * 0.17,
+            height: MediaQuery.of(context).size.height * 0.088,
+            child: ImageData(IconsPath.myclass),
+            color: Color(0xFF1C1B1E),
           ),
         ),
         Text(
@@ -61,7 +62,32 @@ class _NeighborhoodLifeState extends State<NeighborhoodLife> {
   }
 
 // _subject
-  Widget _subject(BuildContext context ,String title) {
+  Widget _subject(BuildContext context, String title) {
+    return Row(
+      children: [
+        ElevatedButton.icon(
+          onPressed: () {},
+          icon: const Icon(
+            Icons.menu,
+            size: 24,
+          ),
+          label: Text(
+            title,
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          ),
+          style: ElevatedButton.styleFrom(
+            primary: Color(0xFF1C1B1E),
+            shape: RoundedRectangleBorder(
+              side: BorderSide(color: Colors.grey),
+              borderRadius: BorderRadius.circular(18.0),
+            ),
+          ),
+        ),
+      ],
+    );
+  } // _subject
+
+  Widget _subjectanother(BuildContext context, String title) {
     return Row(
       children: [
         ElevatedButton.icon(
@@ -70,38 +96,37 @@ class _NeighborhoodLifeState extends State<NeighborhoodLife> {
             Icons.local_fire_department_outlined,
             size: 24,
           ),
-          label:  Text(
-            title ,
+          label: Text(
+            title,
             style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
           ),
           style: ElevatedButton.styleFrom(
             primary: Color(0xFF1C1B1E),
             shape: RoundedRectangleBorder(
-              side:BorderSide(color: Colors.grey) ,
+              side: BorderSide(color: Colors.grey),
               borderRadius: BorderRadius.circular(18.0),
-
             ),
           ),
         ),
       ],
     );
   }
+
   // _subject
-  Widget _anothersubject(BuildContext context ,String title) {
+  Widget _anothersubject(BuildContext context, String title) {
     return Row(
       children: [
         ElevatedButton(
           onPressed: () {},
-          child:  Text(
-            title ,
+          child: Text(
+            title,
             style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
           ),
           style: ElevatedButton.styleFrom(
             primary: Color(0xFF1C1B1E),
             shape: RoundedRectangleBorder(
-              side:BorderSide(color: Colors.grey) ,
+              side: BorderSide(color: Colors.grey),
               borderRadius: BorderRadius.circular(18.0),
-
             ),
           ),
         ),
@@ -109,6 +134,109 @@ class _NeighborhoodLifeState extends State<NeighborhoodLife> {
     );
   }
 
+  // _mianBoard()
+  Widget _mianBoard({
+    String? subjectTitile,
+    String? popularTitles,
+    String? title,
+    String? content,
+    String? imagePath,
+    String? boardTime,
+    int count = 0,
+    int groupCount = 0,
+    int chattingCount = 0,
+    int goodCount = 0,
+  }) {
+    return  Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Align(
+            alignment: Alignment.topLeft,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 4.0),
+              child: Row(
+                children: [
+                  Flexible(
+                    flex: 1,
+                    child: Container(
+                      width: MediaQuery.of(context).size.width * 0.13,
+                      height: MediaQuery.of(context).size.height * 0.03,
+                      color: Colors.cyan,
+                      child: Center(
+                        child: Text(
+                          popularTitles ?? ('인기'),
+                          style: TextStyle(color: Colors.cyanAccent),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Flexible(
+                      flex: 1,
+                      child: Container(
+                        width: MediaQuery.of(context).size.width * 0.13,
+                        height: MediaQuery.of(context).size.height * 0.03,
+                        color: Colors.black26,
+                        child: Center(
+                          child: Text(
+                            subjectTitile ?? ('주제'),
+                            style: TextStyle(
+                              color: Colors.green,
+                            ),
+                            textAlign: TextAlign.left,
+                          ),
+                        ),
+                      ),
+                    ),
+                  Flexible(
+                    flex: 5,
+                    child: Align(
+                      alignment: Alignment.topRight,
+                      child: Container(
+                        width: MediaQuery.of(context).size.width * 0.17,
+                        height: MediaQuery.of(context).size.height * 0.08,
+                        decoration: BoxDecoration(
+                          color: Colors.grey,
+                          borderRadius: BorderRadius.circular(12),
+                          image: DecorationImage(
+                            image: AssetImage(imagePath ??
+                                'assets/images/carrotMarket/pt.jpeg'),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+
+                ],
+              ),
+            ),
+          ),
+             Text(
+              title ?? '지산동 모임',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+              ),
+            ),
+
+          Text(
+            content ?? '안녕하세요 심심하셨거나 친구가없거나 혼술하지마시구',
+            style: TextStyle(
+              color: Colors.grey,
+            ),
+          ),
+          Text(
+            boardTime ?? '지산동 6시간 전',
+            style: TextStyle(
+              color: Colors.grey,
+              fontSize: 12,
+            ),
+          ),
+
+        ],
+
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -177,39 +305,63 @@ class _NeighborhoodLifeState extends State<NeighborhoodLife> {
             ),
           ),
           SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-
+            scrollDirection: Axis.horizontal,
             child: Row(
-            children: [
-              _subject(context , '주제'),
-              SizedBox(width: 5,),
-              _subject(context , '인기글'),
-              SizedBox(width: 5,),
-              _anothersubject(context , '공공소식'),
-              SizedBox(width: 5,),
-              _anothersubject(context , '동네맛집'),
-              SizedBox(width: 5,),
-              _anothersubject(context , '동네질문'),
-              SizedBox(width: 5,),
-              _anothersubject(context , '동네소식'),
-              SizedBox(width: 5,),
-              _anothersubject(context , '생활정보'),
-              SizedBox(width: 5,),
-              _anothersubject(context , '실기산날씨'),
-              SizedBox(width: 5,),
-              _anothersubject(context , '취미생활'),
-              SizedBox(width: 5,),
-              _anothersubject(context , '일상'),
-              SizedBox(width: 5,),
-              _anothersubject(context , '분실/실종센터'),
-              SizedBox(width: 5,),
-              _anothersubject(context , '동네사건사고'),
-              SizedBox(width: 5,),
-              _anothersubject(context , '해주세요'),
-              SizedBox(width: 5,),
-              _anothersubject(context , '동네사진'),
-            ],
-
+              children: [
+                _subject(context, '주제'),
+                SizedBox(
+                  width: 5,
+                ),
+                _subjectanother(context, '인기글'),
+                SizedBox(
+                  width: 5,
+                ),
+                _anothersubject(context, '공공소식'),
+                SizedBox(
+                  width: 5,
+                ),
+                _anothersubject(context, '동네맛집'),
+                SizedBox(
+                  width: 5,
+                ),
+                _anothersubject(context, '동네질문'),
+                SizedBox(
+                  width: 5,
+                ),
+                _anothersubject(context, '동네소식'),
+                SizedBox(
+                  width: 5,
+                ),
+                _anothersubject(context, '생활정보'),
+                SizedBox(
+                  width: 5,
+                ),
+                _anothersubject(context, '실기산날씨'),
+                SizedBox(
+                  width: 5,
+                ),
+                _anothersubject(context, '취미생활'),
+                SizedBox(
+                  width: 5,
+                ),
+                _anothersubject(context, '일상'),
+                SizedBox(
+                  width: 5,
+                ),
+                _anothersubject(context, '분실/실종센터'),
+                SizedBox(
+                  width: 5,
+                ),
+                _anothersubject(context, '동네사건사고'),
+                SizedBox(
+                  width: 5,
+                ),
+                _anothersubject(context, '해주세요'),
+                SizedBox(
+                  width: 5,
+                ),
+                _anothersubject(context, '동네사진'),
+              ],
             ),
           ),
           const SizedBox(
@@ -218,7 +370,7 @@ class _NeighborhoodLifeState extends State<NeighborhoodLife> {
               thickness: 0.5,
             ),
           ),
-          _postwidget(),
+          _mianBoard(),
         ],
       ),
       backgroundColor: const Color(0xFF1C1B1E),
