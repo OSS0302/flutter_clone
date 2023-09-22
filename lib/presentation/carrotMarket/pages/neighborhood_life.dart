@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_clone/presentation/carrotMarket/components/carrot_avatar_widget.dart';
 import 'package:flutter_clone/presentation/components/image_data.dart';
@@ -147,94 +148,146 @@ class _NeighborhoodLifeState extends State<NeighborhoodLife> {
     int chattingCount = 0,
     int goodCount = 0,
   }) {
-    return  Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Align(
-            alignment: Alignment.topLeft,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 4.0),
+    return Stack(
+      children: [
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: Container(
+                    width: MediaQuery.of(context).size.width * 0.1,
+                    height: MediaQuery.of(context).size.height * 0.02,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(16),
+                        color: Colors.cyan),
+                    child: Center(
+                      child: Text(
+                        subjectTitile ?? '주제',
+                        style: TextStyle(color: Colors.cyanAccent),
+                      ),
+                    ),
+                  ),
+                ),
+                Container(
+                  width: MediaQuery.of(context).size.width * 0.1,
+                  height: MediaQuery.of(context).size.height * 0.02,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(16),
+                      color: Colors.cyan),
+                  child: Center(
+                    child: Text(
+                      popularTitles ?? '',
+                      style: TextStyle(color: Colors.cyanAccent),
+                    ),
+                  ),
+                )
+              ],
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: Text(
+                title ?? '자산동 모임 ',
+                style: TextStyle(color: Colors.cyanAccent, fontSize: 17),
+              ),
+            ),
+            Container(
+              child: Text(
+                content ?? '안녕하세요 심심하거나 친구 없거나 혼술 하지 마시고 여자친구 ',
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(color: Colors.grey, fontSize: 14),
+              ),
+            ),
+            Row(
+              children: [
+                Text(
+                  boardTime ?? '지산동 6시간전  ',
+                  style: TextStyle(color: Colors.grey, fontSize: 13),
+                ),
+                count > 0
+                    ? Text(
+                        '조회수 ',
+                        style:
+                            const TextStyle(color: Colors.grey, fontSize: 13),
+                      )
+                    : Container(),
+                count > 0
+                    ? Text(
+                        count.toString(),
+                        style:
+                            const TextStyle(color: Colors.grey, fontSize: 13),
+                      )
+                    : Container(),
+              ],
+            ),
+            SizedBox(
+              height: 70,
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Flexible(
-                    flex: 1,
-                    child: Container(
-                      width: MediaQuery.of(context).size.width * 0.13,
-                      height: MediaQuery.of(context).size.height * 0.03,
-                      color: Colors.cyan,
-                      child: Center(
-                        child: Text(
-                          popularTitles ?? ('인기'),
-                          style: TextStyle(color: Colors.cyanAccent),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Flexible(
-                      flex: 1,
-                      child: Container(
-                        width: MediaQuery.of(context).size.width * 0.13,
-                        height: MediaQuery.of(context).size.height * 0.03,
-                        color: Colors.black26,
-                        child: Center(
-                          child: Text(
-                            subjectTitile ?? ('주제'),
-                            style: TextStyle(
-                              color: Colors.green,
-                            ),
-                            textAlign: TextAlign.left,
-                          ),
-                        ),
-                      ),
-                    ),
-                  Flexible(
-                    flex: 5,
-                    child: Align(
-                      alignment: Alignment.topRight,
-                      child: Container(
-                        width: MediaQuery.of(context).size.width * 0.17,
-                        height: MediaQuery.of(context).size.height * 0.08,
-                        decoration: BoxDecoration(
-                          color: Colors.grey,
-                          borderRadius: BorderRadius.circular(12),
-                          image: DecorationImage(
-                            image: AssetImage(imagePath ??
-                                'assets/images/carrotMarket/pt.jpeg'),
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-
+                  goodCount > 0
+                      ? const Icon(
+                          Icons.mail_outline,
+                          color: Colors.white,
+                        )
+                      : Container(),
+                  goodCount > 0
+                      ? Text(
+                          count.toString(),
+                          style: const TextStyle(color: Colors.white),
+                        )
+                      : Container(),
+                  chattingCount > 0
+                      ? const Icon(
+                          CupertinoIcons.chat_bubble,
+                          color: Colors.white,
+                        )
+                      : Container(),
+                  chattingCount > 0
+                      ? Text(
+                          count.toString(),
+                          style: const TextStyle(color: Colors.white),
+                        )
+                      : Container(),
+                  groupCount > 0
+                      ? const Icon(
+                          Icons.people_alt,
+                          color: Colors.white,
+                        )
+                      : Container(),
+                  groupCount > 0
+                      ? Text(
+                          count.toString(),
+                          style: const TextStyle(color: Colors.white),
+                        )
+                      : Container(),
                 ],
               ),
             ),
-          ),
-             Text(
-              title ?? '지산동 모임',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 18,
+          ],
+        ),
+        Align(
+          alignment: Alignment.topRight,
+          child: Column(children: [
+            Container(
+              width: MediaQuery.of(context).size.width * 0.2,
+              height: MediaQuery.of(context).size.height * 0.1,
+              decoration: BoxDecoration(
+                color: Colors.grey,
+                borderRadius: BorderRadius.circular(16),
+                image: DecorationImage(
+                  image: AssetImage(
+                      imagePath ?? 'assets/images/carrotMarket/pt.jpeg'),
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
-
-          Text(
-            content ?? '안녕하세요 심심하셨거나 친구가없거나 혼술하지마시구',
-            style: TextStyle(
-              color: Colors.grey,
-            ),
-          ),
-          Text(
-            boardTime ?? '지산동 6시간 전',
-            style: TextStyle(
-              color: Colors.grey,
-              fontSize: 12,
-            ),
-          ),
-
-        ],
-
+          ]),
+        ),
+      ],
     );
   }
 
@@ -370,10 +423,61 @@ class _NeighborhoodLifeState extends State<NeighborhoodLife> {
               thickness: 0.5,
             ),
           ),
-          _mianBoard(),
+          _mianBoard(
+            subjectTitile: '주제',
+            popularTitles: '인기',
+            title: '자산동모임',
+            content: '안녕하세요 심심하거나 친구 없거나 혼술 하지 마시고 여자...',
+            count: 1,
+            chattingCount: 1,
+            goodCount: 1,
+            groupCount: 1,
+          ),
+          const SizedBox(
+            child: Divider(
+              color: Colors.grey,
+              thickness: 0.5,
+            ),
+          ),
         ],
       ),
       backgroundColor: const Color(0xFF1C1B1E),
     );
   }
 }
+
+//Column(
+//       crossAxisAlignment: CrossAxisAlignment.stretch,
+//       children: [
+//         Row(
+//           children: [
+//
+//           ],
+//         ),
+//Container(
+//                     width: MediaQuery.of(context).size .width * 0.1,
+//                     height: MediaQuery.of(context).size .height * 0.12,
+//                     decoration: BoxDecoration(
+//                       color: Colors.grey,
+//                       borderRadius: BorderRadius.circular(16),
+//                       image: DecorationImage(
+//                         image: AssetImage(
+//                             imagePath ?? 'assets/images/carrotMarket/pt.jpeg'),
+//                         fit: BoxFit.cover,
+//                       ),
+//                     ),
+//                   ),
+//           Container(
+//             width: MediaQuery.of(context).size.width * 0.1,
+//             height: MediaQuery.of(context).size.height * 0.1,
+//             decoration: BoxDecoration(
+//                 borderRadius: BorderRadius.circular(16),
+//                 color: Colors.cyan),
+//             child: Text(
+//               subjectTitile ?? '주제',
+//               style: TextStyle(color: Colors.cyanAccent),
+//             ),
+//           ),
+//
+//       ],
+//     );
