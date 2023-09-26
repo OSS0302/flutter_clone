@@ -11,7 +11,6 @@ class NeighborhoodLife extends StatefulWidget {
 }
 
 class _NeighborhoodLifeState extends State<NeighborhoodLife> {
-
   final List<String> _valueList = [
     '비전1동',
     '죽백동',
@@ -20,6 +19,37 @@ class _NeighborhoodLifeState extends State<NeighborhoodLife> {
   ];
   String _selectedValue = '비전1동';
 
+  Widget _button() {
+    return Stack(
+      children: [
+        Align(
+          alignment: Alignment.bottomRight,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              ElevatedButton.icon(
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.add,
+                  size: 24,
+                ),
+                label: const Text(
+                  '글쓰기',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ),
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.orange,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(18.0),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -78,114 +108,117 @@ class _NeighborhoodLifeState extends State<NeighborhoodLife> {
           ),
         ],
       ),
-      body: ListView(
+      body: Stack(
         children: [
-          _StroyBoard(),
-          const SizedBox(
-            child: Divider(
-              thickness: 10,
-              color: Colors.black,
-            ),
+          ListView(
+            children: [
+              _StroyBoard(),
+              const SizedBox(
+                child: Divider(
+                  thickness: 10,
+                  color: Colors.black,
+                ),
+              ),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    _subject(context, '주제'),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    _subjectanother(context, '인기글'),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    _anothersubject(context, '공공소식'),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    _anothersubject(context, '동네맛집'),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    _anothersubject(context, '동네질문'),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    _anothersubject(context, '동네소식'),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    _anothersubject(context, '생활정보'),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    _anothersubject(context, '실기산날씨'),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    _anothersubject(context, '취미생활'),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    _anothersubject(context, '일상'),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    _anothersubject(context, '분실/실종센터'),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    _anothersubject(context, '동네사건사고'),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    _anothersubject(context, '해주세요'),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    _anothersubject(context, '동네사진'),
+                  ],
+                ),
+              ),
+              const SizedBox(
+                child: Divider(
+                  color: Colors.grey,
+                  thickness: 0.5,
+                ),
+              ),
+              _mianBoard(
+                subjectTitile: '모임',
+                popularTitles: '인기',
+                title: '자산동모임',
+                content: '안녕하세요 심심하거나 친구 없거나 혼술 하지 마시고 여자...',
+                count: 4,
+                chattingCount: 65,
+                goodCount: 24,
+                groupCount: 15,
+              ),
+              _mianBoard(
+                subjectTitile: '주제',
+                popularTitles: '인기',
+                title: '자산동모임',
+                content: '안녕하세요 심심하거나 친구 없거나 혼술 하지 마시고 여자...',
+                count: 4,
+                chattingCount: 65,
+                goodCount: 24,
+              ),
+              _mianBoard(
+                subjectTitile: '이슈',
+                title: '자산동모임',
+                content: '안녕하세요 심심하거나 친구 없거나 혼술 하지 마시고 여자...',
+                count: 4,
+                goodCount: 24,
+              ),
+            ],
           ),
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              children: [
-                _subject(context, '주제'),
-                const SizedBox(
-                  width: 5,
-                ),
-                _subjectanother(context, '인기글'),
-                const SizedBox(
-                  width: 5,
-                ),
-                _anothersubject(context, '공공소식'),
-                const SizedBox(
-                  width: 5,
-                ),
-                _anothersubject(context, '동네맛집'),
-                const SizedBox(
-                  width: 5,
-                ),
-                _anothersubject(context, '동네질문'),
-                const SizedBox(
-                  width: 5,
-                ),
-                _anothersubject(context, '동네소식'),
-                const SizedBox(
-                  width: 5,
-                ),
-                _anothersubject(context, '생활정보'),
-                const SizedBox(
-                  width: 5,
-                ),
-                _anothersubject(context, '실기산날씨'),
-                const SizedBox(
-                  width: 5,
-                ),
-                _anothersubject(context, '취미생활'),
-                const SizedBox(
-                  width: 5,
-                ),
-                _anothersubject(context, '일상'),
-                const SizedBox(
-                  width: 5,
-                ),
-                _anothersubject(context, '분실/실종센터'),
-                const SizedBox(
-                  width: 5,
-                ),
-                _anothersubject(context, '동네사건사고'),
-                const SizedBox(
-                  width: 5,
-                ),
-                _anothersubject(context, '해주세요'),
-                const SizedBox(
-                  width: 5,
-                ),
-                _anothersubject(context, '동네사진'),
-              ],
-            ),
-          ),
-          const SizedBox(
-            child: Divider(
-              color: Colors.grey,
-              thickness: 0.5,
-            ),
-          ),
-          _mianBoard(
-            subjectTitile: '모임',
-            popularTitles: '인기',
-            title: '자산동모임',
-            content: '안녕하세요 심심하거나 친구 없거나 혼술 하지 마시고 여자...',
-            count: 4,
-            chattingCount:65,
-            goodCount: 24,
-            groupCount: 15,
-          ),
-          _mianBoard(
-            subjectTitile: '주제',
-            popularTitles: '인기',
-            title: '자산동모임',
-            content: '안녕하세요 심심하거나 친구 없거나 혼술 하지 마시고 여자...',
-            count: 4,
-            chattingCount:65,
-            goodCount: 24,
-          ),
-          _mianBoard(
-            subjectTitile: '이슈',
-            title: '자산동모임',
-            content: '안녕하세요 심심하거나 친구 없거나 혼술 하지 마시고 여자...',
-            count: 4,
-            goodCount: 24,
-          ),
-
+          _button(),
         ],
       ),
       backgroundColor: const Color(0xFF1C1B1E),
     );
   }
-
 
   // bodyTop Stroy board
   Widget _StroyBoard() {
@@ -198,11 +231,11 @@ class _NeighborhoodLifeState extends State<NeighborhoodLife> {
             VerticalDivider(thickness: 1, indent: 4, color: Colors.grey[500]),
             ...List.generate(
                 10,
-                    (index) => CarrotAvatarWidget(
-                  type: CarrotAvatarType.storyBoardAvatar,
-                  imagePath:
-                  "https://scontent-gmp1-1.cdninstagram.com/v/t51.2885-19/280714442_973301870035556_6298617763728239387_n.jpg?stp=dst-jpg_s160x160&_nc_cat=109&ccb=1-7&_nc_sid=8ae9d6&_nc_ohc=o2fTvbHP6NAAX-5kcaz&_nc_ht=scontent-gmp1-1.cdninstagram.com&oh=00_AfD0vsDKrnuGc_SKLSdl8qHPSfGqYo7cwA0vm-hTihp48A&oe=64ED7E35",
-                )),
+                (index) => CarrotAvatarWidget(
+                      type: CarrotAvatarType.storyBoardAvatar,
+                      imagePath:
+                          "https://scontent-gmp1-1.cdninstagram.com/v/t51.2885-19/280714442_973301870035556_6298617763728239387_n.jpg?stp=dst-jpg_s160x160&_nc_cat=109&ccb=1-7&_nc_sid=8ae9d6&_nc_ohc=o2fTvbHP6NAAX-5kcaz&_nc_ht=scontent-gmp1-1.cdninstagram.com&oh=00_AfD0vsDKrnuGc_SKLSdl8qHPSfGqYo7cwA0vm-hTihp48A&oe=64ED7E35",
+                    )),
           ],
         ),
       ),
@@ -331,19 +364,23 @@ class _NeighborhoodLifeState extends State<NeighborhoodLife> {
                   children: [
                     Row(
                       children: [
-                        popularTitles != null && popularTitles != '' ? Container(
-                          width: MediaQuery.of(context).size.width * 0.1,
-                          height: MediaQuery.of(context).size.height * 0.02,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(16),
-                              color: Colors.cyan),
-                          child: Center(
-                            child: Text(
-                              popularTitles ?? '',
-                              style: const TextStyle(color: Colors.cyanAccent),
-                            ),
-                          ),
-                        ) : Container(),
+                        popularTitles != null && popularTitles != ''
+                            ? Container(
+                                width: MediaQuery.of(context).size.width * 0.1,
+                                height:
+                                    MediaQuery.of(context).size.height * 0.02,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(16),
+                                    color: Colors.cyan),
+                                child: Center(
+                                  child: Text(
+                                    popularTitles ?? '',
+                                    style: const TextStyle(
+                                        color: Colors.cyanAccent),
+                                  ),
+                                ),
+                              )
+                            : Container(),
                         Container(
                           width: MediaQuery.of(context).size.width * 0.1,
                           height: MediaQuery.of(context).size.height * 0.02,
@@ -352,7 +389,7 @@ class _NeighborhoodLifeState extends State<NeighborhoodLife> {
                               color: Colors.cyan),
                           child: Center(
                             child: Text(
-                              subjectTitile?? '',
+                              subjectTitile ?? '',
                               style: const TextStyle(color: Colors.cyanAccent),
                             ),
                           ),
@@ -363,7 +400,8 @@ class _NeighborhoodLifeState extends State<NeighborhoodLife> {
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
                       child: Text(
                         title ?? '자산동 모임 ',
-                        style: const TextStyle(color: Colors.cyanAccent, fontSize: 17),
+                        style: const TextStyle(
+                            color: Colors.cyanAccent, fontSize: 17),
                       ),
                     ),
                     Text(
@@ -376,21 +414,22 @@ class _NeighborhoodLifeState extends State<NeighborhoodLife> {
                       children: [
                         Text(
                           boardTime ?? '지산동 6시간전  ',
-                          style: const TextStyle(color: Colors.grey, fontSize: 13),
+                          style:
+                              const TextStyle(color: Colors.grey, fontSize: 13),
                         ),
                         count > 0
                             ? const Text(
-                          '조회수 ',
-                          style:
-                          TextStyle(color: Colors.grey, fontSize: 13),
-                        )
+                                '조회수 ',
+                                style:
+                                    TextStyle(color: Colors.grey, fontSize: 13),
+                              )
                             : Container(),
                         count > 0
                             ? Text(
-                          count.toString(),
-                          style:
-                          const TextStyle(color: Colors.grey, fontSize: 13),
-                        )
+                                count.toString(),
+                                style: const TextStyle(
+                                    color: Colors.grey, fontSize: 13),
+                              )
                             : Container(),
                       ],
                     ),
@@ -409,73 +448,78 @@ class _NeighborhoodLifeState extends State<NeighborhoodLife> {
                         color: Colors.grey,
                         borderRadius: BorderRadius.circular(16),
                         image: DecorationImage(
-                          image: AssetImage(
-                              imagePath ?? 'assets/images/carrotMarket/pt.jpeg'),
+                          image: AssetImage(imagePath ??
+                              'assets/images/carrotMarket/pt.jpeg'),
                           fit: BoxFit.cover,
                         ),
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 12.0),
-                      child: subjectTitile.contains('모임') ? Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          goodCount > 0
-                              ? const Icon(
-                            Icons.thumb_up_alt,
-                            color: Colors.white,
-                          )
-                              : Container(),
-                          goodCount > 0
-                              ? Text(
-                            goodCount.toString(),
-                            style: const TextStyle(color: Colors.white),
-                          )
-                              : Container(),
-                          groupCount > 0
-                              ? const Icon(
-                            Icons.people_alt,
-                            color: Colors.white,
-                          )
-                              : Container(),
-                          groupCount > 0
-                              ? Text(
-                            groupCount.toString(),
-                            style: const TextStyle(color: Colors.white),
-                          )
-                              : Container(),
-                        ],
-                      ) : Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          goodCount > 0
-                              ? const Icon(
-                            Icons.thumb_up_alt,
-                            color: Colors.white,
-                          )
-                              : Container(),
-                          goodCount > 0
-                              ? Text(
-                            goodCount.toString(),
-                            style: const TextStyle(color: Colors.white),
-                          )
-                              : Container(),
-                          chattingCount > 0
-                              ? const Icon(
-                            CupertinoIcons.chat_bubble,
-                            color: Colors.white,
-                          )
-                              : Container(),
-                          chattingCount > 0
-                              ? Text(
-                            chattingCount.toString(),
-                            style: const TextStyle(color: Colors.white),
-                          )
-                              : Container(),
-                        ],
-                      ),
+                      child: subjectTitile.contains('모임')
+                          ? Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                goodCount > 0
+                                    ? const Icon(
+                                        Icons.thumb_up_alt,
+                                        color: Colors.white,
+                                      )
+                                    : Container(),
+                                goodCount > 0
+                                    ? Text(
+                                        goodCount.toString(),
+                                        style: const TextStyle(
+                                            color: Colors.white),
+                                      )
+                                    : Container(),
+                                groupCount > 0
+                                    ? const Icon(
+                                        Icons.people_alt,
+                                        color: Colors.white,
+                                      )
+                                    : Container(),
+                                groupCount > 0
+                                    ? Text(
+                                        groupCount.toString(),
+                                        style: const TextStyle(
+                                            color: Colors.white),
+                                      )
+                                    : Container(),
+                              ],
+                            )
+                          : Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                goodCount > 0
+                                    ? const Icon(
+                                        Icons.thumb_up_alt,
+                                        color: Colors.white,
+                                      )
+                                    : Container(),
+                                goodCount > 0
+                                    ? Text(
+                                        goodCount.toString(),
+                                        style: const TextStyle(
+                                            color: Colors.white),
+                                      )
+                                    : Container(),
+                                chattingCount > 0
+                                    ? const Icon(
+                                        CupertinoIcons.chat_bubble,
+                                        color: Colors.white,
+                                      )
+                                    : Container(),
+                                chattingCount > 0
+                                    ? Text(
+                                        chattingCount.toString(),
+                                        style: const TextStyle(
+                                            color: Colors.white),
+                                      )
+                                    : Container(),
+                              ],
+                            ),
                     ),
-
                   ],
                 ),
               ),
@@ -490,4 +534,3 @@ class _NeighborhoodLifeState extends State<NeighborhoodLife> {
     );
   }
 }
-
